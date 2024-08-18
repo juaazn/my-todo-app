@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const TaskScheme = new mongoose.Schema(
   {
-    tile: {
+    title: {
       type: String,
       required: [true, 'Campo requerido']
     },

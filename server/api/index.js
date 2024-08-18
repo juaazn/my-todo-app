@@ -3,10 +3,10 @@ import 'dotenv/config'
 import dbConnection from '../config/moongose.config.js'
 import task from './routes/task.js'
 
-dbConnection()
-
 const app = express()
 app.use(express.json())
+
+dbConnection()
 
 app.use('/task', task)
 app.use((req, res, next) => {

@@ -7,6 +7,7 @@ const TaskControllers = {
       res.status(201).send(task)
     } catch (error) {
       res.status(500).send({ message: 'Server error Something went wrong while creating the task', error })
+      console.error(error)
     }
   },
   async updateCompleted (req, res) {
@@ -28,6 +29,7 @@ const TaskControllers = {
       res.status(200).send({ message: 'Task completed', task })
     } catch (error) {
       res.status(500).send({ message: 'Server error Something went wrong while updating the task', error })
+      console.error(error)
     }
   },
   async delete (req, res) {
@@ -44,6 +46,7 @@ const TaskControllers = {
       res.status(200).send(allTask)
     } catch (error) {
       res.status(500).send({ message: 'Server error something went wrong while getting all tasks', error })
+      console.error(error)
     }
   },
   async updateTile () {
@@ -51,6 +54,7 @@ const TaskControllers = {
       await Tasks.findByIdAndUpdate(req.params._id, { title: req.body.title }, { new: true })
     } catch (error) {
       res.status(500).send({ message: 'Server error updateTitle', error })
+      console.error(error)
     }
   },
   async getTaskForId (req, res) {
@@ -59,6 +63,7 @@ const TaskControllers = {
       res.status(200).send({ message: taskForId })
     } catch (error) {
       res.status(500).send({ message: 'Server error updateTitle', error })
+      console.error(error)
     }
   }
 }

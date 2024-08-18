@@ -9,10 +9,23 @@ const TaskControllers = {
       res.status(500).send({ message: 'Server error Something went wrong while creating the task', error })
     }
   },
-  async update (req, res) {
+  async updateCompleted (req, res) {
     try {
-      await Tasks.findByIdAndUpdate(req.params._id, req.body, { new: true })
-      res.status(200).send({ message: 'Task update' })
+      const taskUpdateCompleted = await Tasks.findById(req.params._id)
+
+      const task = await Tasks.findByIdAndUpdate(
+        taskUpdateCompleted, 
+        { completed: !taskUpdateCompleted.completed },
+        { new: true }
+      )
+
+      if (!task) {
+        return res
+          .status(400)
+          .send({ message: 'Task not found with that id' });
+      }
+
+      res.status(200).send({ message: 'Task completed', task })
     } catch (error) {
       res.status(500).send({ message: 'Server error Something went wrong while updating the task', error })
     }

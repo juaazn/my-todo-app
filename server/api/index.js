@@ -9,6 +9,9 @@ const app = express()
 app.use(express.json())
 
 app.use('/task', task)
+app.use((req, res, next) => {
+  res.status(404).send('Route no found 404')
+})
 
 app.listen(process.env.PORT, () => {
   console.log(`💾 The server has started on port: http://localhost:${process.env.PORT}`)

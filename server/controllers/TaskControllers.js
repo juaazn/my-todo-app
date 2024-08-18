@@ -49,9 +49,10 @@ const TaskControllers = {
       console.error(error)
     }
   },
-  async updateTile () {
+  async updateTile (req, res) {
     try {
-      await Tasks.findByIdAndUpdate(req.params._id, { title: req.body.title }, { new: true })
+      const newTilte = await Tasks.findByIdAndUpdate(req.params._id, { title: req.body.title }, { new: true })
+      res.status(200).send({ message: 'New title', newTilte })
     } catch (error) {
       res.status(500).send({ message: 'Server error updateTitle', error })
       console.error(error)

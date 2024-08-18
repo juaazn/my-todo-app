@@ -6,7 +6,7 @@ const TaskControllers = {
       const task = await Tasks.create(req.body)
       res.status(201).send(task)
     } catch (error) {
-      res.status(500).send({ message: 'Server error Something went wrong while creating the task', error })
+      res.status(400).send({ message: 'Server error Something went wrong while creating the task', error })
       console.error(error)
     }
   },

@@ -6,7 +6,7 @@ import task from '../routes/task.js'
 
 const app = express()
 app.use(cors({
-  origin: ['http://localhost:5174/']
+  origin: [`${process.env.DEV}`]
 }))
 app.use(express.json())
 

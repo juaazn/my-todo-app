@@ -5,9 +5,7 @@ import dbConnection from '../config/moongose.config.js'
 import task from '../routes/task.js'
 
 const app = express()
-app.use(cors({
-  origin: [`${process.env.DEV}`]
-}))
+app.use(cors())
 app.use(express.json())
 
 dbConnection()

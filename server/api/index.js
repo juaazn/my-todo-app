@@ -1,7 +1,7 @@
 import express from 'express'
 import 'dotenv/config'
 import dbConnection from '../config/moongose.config.js'
-import task from './routes/task.js'
+import task from '../routes/task.js'
 
 const app = express()
 app.use(express.json())
